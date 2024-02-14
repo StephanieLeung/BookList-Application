@@ -49,6 +49,7 @@ public class Book {
         this.fields.remove(field);
     }
 
+    //EFFECT: returns list of fields
     public ArrayList<Field> getFields() {
         return fields;
     }

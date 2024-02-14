@@ -6,6 +6,7 @@ import java.util.List;
 public class UserList {
     private List<User> userList;
 
+    //EFFECT: creates an empty list of users
     public UserList() {
         userList = new ArrayList<>();
     }
