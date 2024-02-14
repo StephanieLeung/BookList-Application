@@ -14,22 +14,32 @@ public class Tags extends Field {
     //REQUIRES: !tags.contain(name)
     //MODIFIES: this
     //EFFECT: add tag to list of tags
-    private void addTag(String name) {
+    public void addTag(String name) {
         tags.add(name);
     }
 
-    //REQUIRES: tags.contains(name)
+    //REQUIRES: tags.contains(label)
     //MODIFIES: this
-    //EFFECTS: edits tag with given name
-    private void editTag(int index, String name) {
-        tags.remove(index);
-        tags.add(index, name);
+    //EFFECTS: updates label in tags with the newLabel
+    public void editTag(String label, String newLabel) {
+        for (int i = 0; i <= tags.size(); i++) {
+            if (tags.get(i).equals(label)) {
+                tags.remove(i);
+                tags.add(i, newLabel);
+                break;
+            }
+        }
     }
 
     //REQUIRES: tags.contains(name)
     //MODIFIES: this
     //EFFECT: removes tag from list of tags
-    private void removeTag(String name) {
+    public void removeTag(String name) {
         tags.remove(name);
+    }
+
+    //EFFECTS: returns list of tags
+    public ArrayList<String> getTags() {
+        return tags;
     }
 }

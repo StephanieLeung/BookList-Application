@@ -13,6 +13,7 @@ public class Book {
     public Book(String title) {
         this.title = title;
         dateCreated = LocalDate.now();
+        fields = new ArrayList<>();
     }
 
     //EFFECT: returns title of book
@@ -31,8 +32,7 @@ public class Book {
         this.fields.add(field);
     }
 
-    //REQUIRES: fields contains a field with given name
-    //EFFECTS: finds field by name
+    //EFFECTS: finds and returns field by name, null otherwise
     public Field findField(String name) {
         for (Field f : fields) {
             if (f.getName().equals(name)) {
@@ -47,5 +47,9 @@ public class Book {
     //EFFECT: remove field from book
     public void removeField(Field field) {
         this.fields.remove(field);
+    }
+
+    public ArrayList<Field> getFields() {
+        return fields;
     }
 }

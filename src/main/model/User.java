@@ -43,11 +43,6 @@ public class User {
         return bookList;
     }
 
-    //EFFECTS: updates user's book list with given
-    public void updateBookList(ArrayList<Book> bookList) {
-        this.bookList = bookList;
-    }
-
     //EFFECTS: returns true if login credentials match user; false otherwise
     public boolean checkLogin(String id, String password) {
         if (id.equals(username) || id.equals(email)) {
