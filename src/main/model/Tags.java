@@ -22,13 +22,9 @@ public class Tags extends Field {
     //MODIFIES: this
     //EFFECTS: updates label in tags with the newLabel
     public void editTag(String label, String newLabel) {
-        for (int i = 0; i <= tags.size(); i++) {
-            if (tags.get(i).equals(label)) {
-                tags.remove(i);
-                tags.add(i, newLabel);
-                break;
-            }
-        }
+        int index = tags.indexOf(label);
+        tags.remove(index);
+        tags.add(index, newLabel);
     }
 
     //REQUIRES: tags.contains(name)
