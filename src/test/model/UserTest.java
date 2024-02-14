@@ -1,9 +1,7 @@
 package model;
 
 import org.junit.jupiter.api.*;
-
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
     User user1;
