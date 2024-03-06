@@ -1,0 +1,19 @@
+{"users": [{
+  "password": "password",
+  "books": [{
+    "title": "title",
+    "fields": [
+      {
+        "name": "author",
+        "desc": "kim"
+      },
+      {
+        "name": "genre",
+        "tags": ["horror"]
+      }
+    ],
+    "date-created": "2024-03-06"
+  }],
+  "email": "email",
+  "username": "username"
+}]}

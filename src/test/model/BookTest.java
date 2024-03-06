@@ -16,8 +16,10 @@ public class BookTest {
     }
 
     @Test
-    void getTitleTest() {
+    void setTitleTest() {
         assertEquals("book", book.getTitle());
+        book.setTitle("new book");
+        assertEquals("new book", book.getTitle());
     }
 
     @Test

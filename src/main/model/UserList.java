@@ -1,9 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserList {
+// Represents a list of users
+public class UserList implements Writable {
     private List<User> userList;
 
     //EFFECT: creates an empty list of users
@@ -50,6 +55,16 @@ public class UserList {
             }
         }
         return false;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        JSONArray jsonArray = new JSONArray();
+        for (User u : userList) {
+            jsonArray.put(u.toJson());
+        }
+        return json.put("users", jsonArray);
     }
 
 }

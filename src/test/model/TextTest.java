@@ -18,7 +18,7 @@ public class TextTest {
         text.setName("Author");
         assertEquals("Author", text.getName());
 
-        text.updateText("charles");
+        text.editField("james", "charles");
         assertEquals("charles", text.getDesc());
     }
 }

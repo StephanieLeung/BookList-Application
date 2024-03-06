@@ -1,8 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
-public class User {
+// Represents a user with a book list
+public class User implements Writable {
     private String username;
     private String email;
     private String password;
@@ -49,5 +54,21 @@ public class User {
             return password.equals(this.password);
         }
         return false;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("username", username);
+        json.put("email", email);
+        json.put("password", password);
+
+        JSONArray booksJson = new JSONArray();
+        for (Book b : bookList) {
+            booksJson.put(b.toJson());
+        }
+        json.put("books", booksJson);
+
+        return json;
     }
 }

@@ -15,16 +15,16 @@ public class TagsTest {
 
     @Test
     void addTagsTest() {
-        assertEquals(0, tags.getTags().size());
+        assertEquals(0, tags.getData().size());
         tags.addTag("comedy");
-        assertEquals(1, tags.getTags().size());
+        assertEquals(1, tags.getData().size());
     }
 
     @Test
     void editTagsOneTagTest() {
         tags.addTag("comedy");
-        tags.editTag("comedy", "horror");
-        assertEquals("horror", tags.getTags().get(0));
+        tags.editField("comedy", "horror");
+        assertEquals("horror", tags.getData().get(0));
     }
 
     @Test
@@ -33,19 +33,19 @@ public class TagsTest {
         tags.addTag("romance");
         tags.addTag("fantasy");
 
-        tags.editTag("horror", "comedy");
-        assertEquals("comedy", tags.getTags().get(0));
+        tags.editField("horror", "comedy");
+        assertEquals("comedy", tags.getData().get(0));
 
-        tags.editTag("romance", "manga");
-        assertEquals("manga", tags.getTags().get(1));
+        tags.editField("romance", "manga");
+        assertEquals("manga", tags.getData().get(1));
     }
 
     @Test
     void removeTagsOneTagTest() {
         tags.addTag("romance");
-        assertEquals(1, tags.getTags().size());
+        assertEquals(1, tags.getData().size());
         tags.removeTag("romance");
-        assertEquals(0, tags.getTags().size());
+        assertEquals(0, tags.getData().size());
     }
 
     @Test
@@ -54,8 +54,8 @@ public class TagsTest {
         tags.addTag("science");
         tags.addTag("horror");
 
-        assertEquals(3, tags.getTags().size());
+        assertEquals(3, tags.getData().size());
         tags.removeTag("science");
-        assertEquals(2, tags.getTags().size());
+        assertEquals(2, tags.getData().size());
     }
 }

@@ -3,17 +3,24 @@ package ui;
 import model.Book;
 import model.User;
 import model.UserList;
+import persistence.JsonHandler;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Represents the BookTracker application
 public class BookTracker {
+    private static final String JSON_STORE = "./data/booktracker.json";
     private Scanner scanner;
     private UserList userList;
     private User currentUser;
     private ArrayList<Book> bookList;
 
-    public BookTracker() {
+    private JsonHandler jsonHandler;
+
+    public BookTracker() throws FileNotFoundException {
         runBookTracker();
     }
 
@@ -29,10 +36,10 @@ public class BookTracker {
             }
             menu();
             choice = scanner.nextInt();
-            if (choice == 5) {
+            if (choice == 7) {
                 currentUser = null;
                 bookList = null;
-            } else if (choice == 6) {
+            } else if (choice == 8) {
                 keepRunning = false;
             } else {
                 handleMenu(choice);
@@ -44,6 +51,12 @@ public class BookTracker {
     public void init() {
         scanner = new Scanner(System.in);
         userList = new UserList();
+        jsonHandler = new JsonHandler(JSON_STORE);
+        try {
+            userList = jsonHandler.read();
+        } catch (IOException e) {
+            // do nothing
+        }
     }
 
     //MODIFIES: this
@@ -67,7 +80,6 @@ public class BookTracker {
 
         bookList = currentUser.getBookList();
         System.out.println("Welcome, " + currentUser.getUsername() + ".");
-
     }
 
     //MODIFIES: this
@@ -104,11 +116,14 @@ public class BookTracker {
         System.out.println("\t2. Remove book from list");
         System.out.println("\t3. View all books");
         System.out.println("\t4. Edit book");
-        System.out.println("\t5. Logout");
-        System.out.println("\t6. Quit");
+        System.out.println("\t5. Load list");
+        System.out.println("\t6. Save list");
+        System.out.println("\t7. Logout");
+        System.out.println("\t8. Quit");
     }
 
     //EFFECTS: handles user choice from menu
+    @SuppressWarnings("methodlength")
     private void handleMenu(int choice) {
         switch (choice) {
             case 1:
@@ -126,6 +141,11 @@ public class BookTracker {
                 break;
             case 3:
                 displayBooks();
+                break;
+            case 5:
+                break;
+            case 6:
+                saveUserData();
                 break;
             default:
                 System.out.println("Invalid choice. ");
@@ -181,6 +201,16 @@ public class BookTracker {
             return chooseBook();
         } else {
             return null;
+        }
+    }
+
+    private void saveUserData() {
+        try {
+            jsonHandler.open();
+            jsonHandler.write(userList);
+            jsonHandler.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to find file");
         }
     }
 }

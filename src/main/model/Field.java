@@ -1,23 +1,39 @@
 package model;
 
+import persistence.Writable;
+
 import java.util.ArrayList;
 
-public abstract class Field {
+// Represents a field for a book
+public abstract class Field implements Writable {
     protected String name;
+    protected ArrayList<String> data;
 
-    //EFFECT: sets name to given
+    //EFFECTS: sets name to given
     public Field(String name) {
         this.name = name;
+        data = new ArrayList<>();
     }
 
-    //EFFECT: returns name
+    //EFFECTS: returns name
     public String getName() {
         return name;
     }
 
-    //EFFECT: sets name to given
+    //MODIFIES: this
+    //EFFECTS: sets name to given
     public void setName(String name) {
         this.name = name;
     }
+
+    public ArrayList<String> getData() {
+        return data;
+    }
+
+    //MODIFIES: this
+    //EFFECTS: edits field
+    public abstract void editField(String oldVal, String updateVal);
+
+
 
 }

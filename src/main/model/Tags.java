@@ -1,7 +1,11 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
+// Represents the tags field type
 public class Tags extends Field {
     private ArrayList<String> tags;
 
@@ -21,7 +25,8 @@ public class Tags extends Field {
     //REQUIRES: tags.contains(label)
     //MODIFIES: this
     //EFFECTS: updates label in tags with the newLabel
-    public void editTag(String label, String newLabel) {
+    @Override
+    public void editField(String label, String newLabel) {
         int index = tags.indexOf(label);
         tags.remove(index);
         tags.add(index, newLabel);
@@ -34,8 +39,17 @@ public class Tags extends Field {
         tags.remove(name);
     }
 
+    @Override
     //EFFECTS: returns list of tags
-    public ArrayList<String> getTags() {
+    public ArrayList<String> getData() {
         return tags;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("tags", new JSONArray(tags));
+        return json;
     }
 }
