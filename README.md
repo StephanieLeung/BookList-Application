@@ -7,7 +7,8 @@ As an avid reader myself, I've always wanted a more personalized book tracker as
 
 ## User Stories
 - As a user, I want to be able to create and register an account
-- As a user, I want to be able save my reading list and access it after quitting and logging back into my account.
+- As a user, I want to be able to have the option to load user data from file
+- As a user, I want to be able to have the option to save user data and access it after quitting and logging back into my account
 - As a user, I want to be able to add a book to my reading list
 - As a user, I want to be able to view the list of books I've added to my reading list
 - As a user, I want to be able to edit any feature of a book I've added to my reading list

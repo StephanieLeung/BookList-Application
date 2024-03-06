@@ -18,9 +18,10 @@ import java.nio.file.Paths;
 import java.util.List;
 
 // Represents a handler to do all Json related actions
-// CREDIT: this portion is heavily modelled off of the JsonSerializationDemo provided as reference
+// CREDIT: this class is heavily modelled off of the JsonSerializationDemo provided as reference
 public class JsonHandler {
     private String data;
+    private static final int TAB = 4;
     private PrintWriter writer;
 
     //EFFECTS: creates a JsonHandler with file name
@@ -46,7 +47,7 @@ public class JsonHandler {
     //EFFECTS: writes JSON representation of userList to file
     public void write(UserList userList) {
         JSONObject jsonObject = userList.toJson();
-        writer.print(jsonObject.toString(4));
+        writer.print(jsonObject.toString(TAB));
     }
 
     //MODIFIES: this

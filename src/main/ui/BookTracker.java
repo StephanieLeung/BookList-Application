@@ -32,14 +32,15 @@ public class BookTracker {
 
         while (keepRunning) {
             if (currentUser == null) {
+                handleLoad();
                 login();
             }
             menu();
             choice = scanner.nextInt();
-            if (choice == 7) {
+            if (choice == 6) {
                 currentUser = null;
                 bookList = null;
-            } else if (choice == 8) {
+            } else if (choice == 7) {
                 keepRunning = false;
             } else {
                 handleMenu(choice);
@@ -52,11 +53,6 @@ public class BookTracker {
         scanner = new Scanner(System.in);
         userList = new UserList();
         jsonHandler = new JsonHandler(JSON_STORE);
-        try {
-            userList = jsonHandler.read();
-        } catch (IOException e) {
-            // do nothing
-        }
     }
 
     //MODIFIES: this
@@ -79,7 +75,7 @@ public class BookTracker {
         }
 
         bookList = currentUser.getBookList();
-        System.out.println("Welcome, " + currentUser.getUsername() + ".");
+        System.out.println("\nWelcome, " + currentUser.getUsername() + ".");
     }
 
     //MODIFIES: this
@@ -116,10 +112,9 @@ public class BookTracker {
         System.out.println("\t2. Remove book from list");
         System.out.println("\t3. View all books");
         System.out.println("\t4. Edit book");
-        System.out.println("\t5. Load list");
-        System.out.println("\t6. Save list");
-        System.out.println("\t7. Logout");
-        System.out.println("\t8. Quit");
+        System.out.println("\t5. Save list");
+        System.out.println("\t6. Logout");
+        System.out.println("\t7. Quit");
     }
 
     //EFFECTS: handles user choice from menu
@@ -142,13 +137,14 @@ public class BookTracker {
             case 3:
                 displayBooks();
                 break;
-            case 5:
+            case 4:
+                System.out.println("This function hasn't been implemented yet.");
                 break;
-            case 6:
+            case 5:
                 saveUserData();
                 break;
             default:
-                System.out.println("Invalid choice. ");
+                System.out.println("Invalid choice.");
                 break;
         }
     }
@@ -188,7 +184,7 @@ public class BookTracker {
     }
 
     //REQUIRES: bookList.size() > 0
-    //EFFECT: user chooses a book in bookList
+    //EFFECTS: user chooses a book in bookList
     private Book chooseBook() {
         displayBooks();
         if (bookList.size() > 0) {
@@ -204,13 +200,31 @@ public class BookTracker {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: handles whether user wants to load saved data
+    private void handleLoad() {
+        try {
+            UserList tempUserList = jsonHandler.read();
+            System.out.println("Save data found.");
+            System.out.println("Load saved data? (Y/n) ");
+            String choice = scanner.nextLine();
+            if (!choice.equalsIgnoreCase("n")) {
+                userList = tempUserList;
+                System.out.println("Save data successfully loaded!\n");
+            }
+        } catch (IOException e) {
+            // do nothing
+        }
+    }
+
+    //EFFECTS: saves the userList to file
     private void saveUserData() {
         try {
             jsonHandler.open();
             jsonHandler.write(userList);
             jsonHandler.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to find file");
+            System.out.println("Unable to find file.");
         }
     }
 }
