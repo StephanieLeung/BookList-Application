@@ -69,7 +69,7 @@ public class Book implements Writable {
         return fields;
     }
 
-    //
+    //EFFECTS: converts Book object into JSON object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

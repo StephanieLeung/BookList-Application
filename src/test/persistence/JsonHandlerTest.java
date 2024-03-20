@@ -46,7 +46,7 @@ public class JsonHandlerTest {
             assertEquals("email", user.getEmail());
             Book book = user.getBookList().get(0);
             assertEquals("title", book.getTitle());
-            assertEquals(LocalDate.now(), book.getDateCreated());
+            assertEquals(LocalDate.of(2024,3,6), book.getDateCreated());
             List<Field> fields = book.getFields();
             assertEquals(2, fields.size());
             assertEquals("author", fields.get(0).getName());

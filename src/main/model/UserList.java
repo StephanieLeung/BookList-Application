@@ -57,6 +57,7 @@ public class UserList implements Writable {
         return false;
     }
 
+    //EFFECTS: returns UserList as JSON object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

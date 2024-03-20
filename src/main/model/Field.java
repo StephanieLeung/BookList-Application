@@ -26,6 +26,7 @@ public abstract class Field implements Writable {
         this.name = name;
     }
 
+    //EFFECTS: returns content of field
     public ArrayList<String> getData() {
         return data;
     }

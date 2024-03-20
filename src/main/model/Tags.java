@@ -46,6 +46,7 @@ public class Tags extends Field {
     }
 
     @Override
+    //EFFECTS: returns Tags as a JSONObject
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);

@@ -24,6 +24,7 @@ public class Text extends Field {
         return this.data.get(0);
     }
 
+    //EFFECTS: converts Text object into JSON
     @Override
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
