@@ -6,7 +6,6 @@ import model.UserList;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 // Represents GUI of register page for BookTracker
 public class RegisterForm extends Form {
@@ -26,9 +25,13 @@ public class RegisterForm extends Form {
         String email = this.email.getText();
         String password = String.valueOf(this.password.getPassword());
         if (userList.checkId(username) || userList.checkId(email)) {
-            System.out.println("Already exists");
+            JOptionPane.showMessageDialog(null,
+                    "User already exists. Go to login page.");
         } else {
-            userList.addUser(new User(username, email, password));
+            User u = new User(username, email, password);
+            userList.addUser(u);
+            mainPanel.add(new BookPage(u, userList, mainPanel, layout), "3");
+            layout.show(mainPanel, "" + (3));
         }
     }
 
@@ -58,13 +61,8 @@ public class RegisterForm extends Form {
     public void placeButtonRow(JPanel panel) {
         JButton submit = new JButton("Register");
         submit.addActionListener(this);
-        JButton login = new JButton("Login");
-        login.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                layout.show(mainPanel, "" + (1));
-            }
-        });
+        JButton login = new JButton("Login ->");
+        login.addActionListener(e -> layout.show(mainPanel, "" + (1)));
         JPanel buttons = createButtonRow(submit);
         buttons.add(login);
 

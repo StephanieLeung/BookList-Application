@@ -6,8 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 // Represents generic form using Swing
 public abstract class Form extends JPanel implements ActionListener {
@@ -51,12 +49,16 @@ public abstract class Form extends JPanel implements ActionListener {
         return panel;
     }
 
+    //MODIFIES: this
+    //EFFECTS: places user field onto given panel
     public void placeUserField(JPanel panel) {
         username = new JTextField(25);
         JPanel userPanel = createInputPanel("Username", username);
         panel.add(userPanel);
     }
 
+    //MODIFIES: this
+    //EFFECTS: places password field onto given panel
     public void placePassField(JPanel panel) {
         password = new JPasswordField(25);
         JPanel passPanel = createInputPanel("Password", password);

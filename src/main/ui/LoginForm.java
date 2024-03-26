@@ -6,7 +6,6 @@ import model.UserList;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 // Represents Login page for GUI
 public class LoginForm extends Form {
@@ -25,9 +24,13 @@ public class LoginForm extends Form {
         String password = String.valueOf(this.password.getPassword());
         User user = userList.findUser(username, password);
         if (user != null) {
-            System.out.println("Login successful");
+            mainPanel.add(new BookPage(user, userList, mainPanel, layout), "3");
+            this.username.setText("");
+            this.password.setText("");
+            layout.show(mainPanel, "" + (3));
         } else {
-            System.out.println("123");
+            JOptionPane.showMessageDialog(null,
+                    "User credentials not found.");
         }
     }
 
@@ -52,13 +55,8 @@ public class LoginForm extends Form {
     public void placeButtons(JPanel panel) {
         JButton submit = new JButton("Login");
         submit.addActionListener(this);
-        JButton register = new JButton("Register");
-        register.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                layout.show(mainPanel, "" + (2));
-            }
-        });
+        JButton register = new JButton("Register ->");
+        register.addActionListener(e -> layout.show(mainPanel, "" + (2)));
         JPanel buttons = createButtonRow(submit);
         buttons.add(register);
 
