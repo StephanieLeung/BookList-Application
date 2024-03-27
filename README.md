@@ -15,3 +15,11 @@ As an avid reader myself, I've always wanted a more personalized book tracker as
 - As a user, I want to be able to delete a book from my reading list
 - As a user, I want to be able to search for a book in my reading list
 - As a user, I want to be able to filter my reading list and view books with the selected feature
+
+# Instructions for Grader
+
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by logging in, clicking the "Add Book" button, and filling the prompt asking for title of the book
+- You can generate the second required action related to the user story "removing X from Y" by clicking the button with the trash icon beside each book title
+- You can locate my visual component by: Stock image of a book cover for every book added
+- You can save the state of my application by clicking the "Save" button at the top right corner of the user's page
+- You can reload the state of my application by clicking "Yes" when prompted to before the start of the whole program
