@@ -5,6 +5,8 @@ import persistence.JsonHandler;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
 import java.util.List;
 
@@ -104,9 +106,44 @@ public class BookPage extends JPanel {
         titleButtonPanel.add(titleLabel);
         titleButtonPanel.add(deleteButton);
 
-        bookPanel.add(new JLabel(cover));
+        JLabel coverLabel = new JLabel(cover);
+        handleViewBook(coverLabel, b, new ImageIcon("./data/book_cover_stock.jpg"));
+
+        bookPanel.add(coverLabel);
         bookPanel.add(titleButtonPanel);
         panel.add(bookPanel);
+    }
+
+    //EFFECTS: opens detailed book page with editable fields when label is clicked
+    public void handleViewBook(JLabel label, Book b, ImageIcon icon) {
+        BookPage classObj = this;
+        label.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new BookDetails(b, icon, classObj);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // needed for mouse listener
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // needed for mouse listener
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // needed for mouse listener
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // needed for mouse listener
+            }
+        });
+
     }
 
     //EFFECTS: adds book to user's list
