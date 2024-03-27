@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 // Represents Login page for GUI
+// CREDIT: this class is modelled off of the SmartHome GUI from lecture
 public class LoginForm extends Form {
 
     //EFFECTS: displays GUI of form and saves needed information
@@ -51,7 +52,7 @@ public class LoginForm extends Form {
         placePassField(panel);
     }
 
-    //EFFECTS: places login and register buttons onto panel
+    //EFFECTS: places login and register buttons onto panel, adds key listener so ENTER also submits
     public void placeButtons(JPanel panel) {
         JButton submit = new JButton("Login");
         submit.addActionListener(this);

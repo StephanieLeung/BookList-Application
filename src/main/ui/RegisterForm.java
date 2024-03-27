@@ -6,8 +6,11 @@ import model.UserList;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 // Represents GUI of register page for BookTracker
+// CREDIT: this class is modelled off of the SmartHome GUI from lecture
 public class RegisterForm extends Form {
     private JTextField email;
 
@@ -65,6 +68,25 @@ public class RegisterForm extends Form {
         login.addActionListener(e -> layout.show(mainPanel, "" + (1)));
         JPanel buttons = createButtonRow(submit);
         buttons.add(login);
+
+        addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                // do nothing
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    submit.doClick();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // do nothing
+            }
+        });
 
         panel.add(buttons);
     }

@@ -4,10 +4,10 @@ import model.UserList;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 // Represents generic form using Swing
+// CREDIT: this class is modelled off of the SmartHome GUI from lecture
 public abstract class Form extends JPanel implements ActionListener {
     protected UserList userList;
     protected JTextField username;
@@ -64,8 +64,4 @@ public abstract class Form extends JPanel implements ActionListener {
         JPanel passPanel = createInputPanel("Password", password);
         panel.add(passPanel);
     }
-
-    //EFFECTS: performs action based on button clicked
-    @Override
-    public abstract void actionPerformed(ActionEvent e);
 }

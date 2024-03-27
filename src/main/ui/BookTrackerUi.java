@@ -6,15 +6,14 @@ import persistence.JsonHandler;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.util.List;
 
 // Represents GUI version of BookTracker
+// CREDIT: Learned how to use Swing from https://docs.oracle.com/javase%2Ftutorial%2Fuiswing%2F%2F/
 public class BookTrackerUi extends JFrame {
     private static final String JSON_STORE = "./data/booktracker.json";
 
-    private UserList userList;
-    private JPanel panel;
-    private JsonHandler jsonHandler;
+    private final UserList userList;
+    private final JsonHandler jsonHandler;
 
 
     //MODIFIES: this
@@ -33,13 +32,14 @@ public class BookTrackerUi extends JFrame {
     //EFFECTS: adds all pages to GUI
     public void createGui() {
         CardLayout layout = new CardLayout();
-        panel = new JPanel(layout);
+        JPanel panel = new JPanel(layout);
         setTitle("BookTracker");
         panel.add(new LoginForm(userList, panel, layout), "1");
         panel.add(new RegisterForm(userList, panel, layout), "2");
 
         add(panel);
     }
+
 
     //EFFECTS: checks if there is save data and loads save if user chooses to
     public UserList handleLoad() {
