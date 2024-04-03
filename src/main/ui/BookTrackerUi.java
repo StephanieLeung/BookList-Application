@@ -1,15 +1,18 @@
 package ui;
 
 import model.*;
+import model.Event;
 import persistence.JsonHandler;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.IOException;
 
 // Represents GUI version of BookTracker
 // CREDIT: Learned how to use Swing from https://docs.oracle.com/javase%2Ftutorial%2Fuiswing%2F%2F/
-public class BookTrackerUi extends JFrame {
+public class BookTrackerUi extends JFrame implements WindowListener {
     private static final String JSON_STORE = "./data/booktracker.json";
 
     private final UserList userList;
@@ -25,7 +28,8 @@ public class BookTrackerUi extends JFrame {
         setSize(600,400);
         setVisible(true);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        addWindowListener(this);
     }
 
     //MODIFIES: this
@@ -57,6 +61,45 @@ public class BookTrackerUi extends JFrame {
         } catch (IOException e) {
             return new UserList();
         }
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        EventLog eventLog = EventLog.getInstance();
+        for (Event event: eventLog) {
+            System.out.println(event.getDescription());
+        }
+        System.exit(0);
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+
     }
 
     //EFFECTS: runs the program

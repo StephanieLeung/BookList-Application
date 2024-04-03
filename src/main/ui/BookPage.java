@@ -100,7 +100,7 @@ public class BookPage extends JPanel {
         deleteButton.setContentAreaFilled(false);
         deleteButton.setSize(20,10);
         deleteButton.addActionListener(e -> {
-            bookList.remove(b);
+            currentUser.removeBook(b);
             updatePanel();
         });
         titleButtonPanel.add(titleLabel);
@@ -149,7 +149,7 @@ public class BookPage extends JPanel {
     //EFFECTS: adds book to user's list
     public void addBook() {
         String title = JOptionPane.showInputDialog("Enter book title: ");
-        bookList.add(new Book(title));
+        currentUser.addBook(new Book(title));
         updatePanel();
     }
 

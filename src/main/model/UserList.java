@@ -20,6 +20,7 @@ public class UserList implements Writable {
     //MODIFIES: this
     //EFFECTS: add user to list
     public void addUser(User user) {
+        EventLog.getInstance().logEvent(new Event(user.getUsername() + " registered as a user."));
         userList.add(user);
     }
 
@@ -36,11 +37,17 @@ public class UserList implements Writable {
         return userList.size();
     }
 
+    //EFFECT: returns user list
+    public List<User> getUserList() {
+        return userList;
+    }
+
     //EFFECT: finds user with given credentials
     //        return null if not found
     public User findUser(String id, String password) {
         for (User user : userList) {
             if (user.checkLogin(id, password)) {
+                EventLog.getInstance().logEvent(new Event(user.getUsername() + " logged in."));
                 return user;
             }
         }
@@ -65,6 +72,7 @@ public class UserList implements Writable {
         for (User u : userList) {
             jsonArray.put(u.toJson());
         }
+        EventLog.getInstance().logEvent(new Event("All user data saved."));
         return json.put("users", jsonArray);
     }
 

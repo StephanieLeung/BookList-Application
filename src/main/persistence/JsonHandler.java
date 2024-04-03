@@ -79,7 +79,8 @@ public class JsonHandler {
             JSONObject nextBook = (JSONObject) json;
             addBook(user, nextBook);
         }
-        userList.addUser(user);
+        List<User> users = userList.getUserList();
+        users.add(user);
     }
 
     //MODIFIES: user

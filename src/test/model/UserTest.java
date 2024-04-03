@@ -30,6 +30,22 @@ class UserTest {
     }
 
     @Test
+    void addBookTest() {
+        Book b = new Book("test");
+        user1.addBook(b);
+        assertTrue(user1.getBookList().contains(b));
+    }
+
+    @Test
+    void removeBookTest() {
+        Book b = new Book("test");
+        user1.addBook(b);
+        assertTrue(user1.getBookList().contains(b));
+        user1.removeBook(b);
+        assertFalse(user1.getBookList().contains(b));
+    }
+
+    @Test
     void setUsernameTest() {
         user1.setUsername("user2");
         assertTrue(user1.checkLogin("user2", "123"));

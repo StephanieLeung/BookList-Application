@@ -3,6 +3,9 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserListTest {
@@ -63,5 +66,14 @@ public class UserListTest {
         assertTrue(userList.checkId("user"));
         assertTrue(userList.checkId("email1"));
         assertFalse(userList.checkId("123"));
+    }
+
+    @Test
+    void getUserListTest() {
+        List<User> users = new ArrayList<>();
+        assertEquals(users, userList.getUserList());
+        users.add(user1);
+        userList.addUser(user1);
+        assertEquals(users, userList.getUserList());
     }
 }

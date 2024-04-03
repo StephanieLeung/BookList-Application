@@ -23,3 +23,15 @@ As an avid reader myself, I've always wanted a more personalized book tracker as
 - You can locate my visual component by: Stock image of a book cover for every book added
 - You can save the state of my application by clicking the "Save" button at the top right corner of the user's page
 - You can reload the state of my application by clicking "Yes" when prompted to before the start of the whole program
+
+## Phase 4: Task 2
+```
+Username registered as a user. 
+Username added book: BookTitle 
+Username added book: BookTitle2 
+Username added book: BookTitle3 
+All user data saved.  
+Username logged in. 
+Username removed book: BookTitle3 
+All user data saved.
+```

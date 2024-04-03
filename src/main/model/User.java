@@ -48,6 +48,19 @@ public class User implements Writable {
         return bookList;
     }
 
+    //EFFECTS: adds given book to book list
+    public void addBook(Book b) {
+        bookList.add(b);
+        EventLog.getInstance().logEvent(new Event(username + " added book: " + b.getTitle()));
+    }
+
+    //REQUIRES: bookList.contains(b)
+    //EFFECTS: removes given book from book list
+    public void removeBook(Book b) {
+        bookList.remove(b);
+        EventLog.getInstance().logEvent(new Event(username + " removed book: " + b.getTitle()));
+    }
+
     //EFFECTS: returns true if login credentials match user; false otherwise
     public boolean checkLogin(String id, String password) {
         if (id.equals(username) || id.equals(email)) {

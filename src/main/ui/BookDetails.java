@@ -10,10 +10,10 @@ import java.awt.*;
 // CREDIT: Uses other mentioned links as well as
 //             - https://stackoverflow.com/questions/5328405/jpanel-padding-in-java
 public class BookDetails extends JFrame {
-    JPanel panel;
-    Book book;
-    ImageIcon cover;
-    BookPage controller;
+    private JPanel panel;
+    private Book book;
+    private ImageIcon cover;
+    private BookPage controller;
 
     //MODIFIES: this
     //EFFECTS: initializes all values and creates GUI for the JFrame
