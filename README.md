@@ -35,3 +35,6 @@ Username logged in.
 Username removed book: BookTitle3 
 All user data saved.
 ```
+
+## Phase 4: Task 3
+A refactor I could implement if I had more time to improve the design would be making the UserList also use the Singleton Pattern, similar to EventLog. This way, the program for the GUI wouldn't have to pass UserList as a parameter to every class that represents a page as the Singleton Pattern would provide global access instead. As the UserList class is only instantiated once through each run of the program, the Singleton Pattern would work well. Similarly, as seen in the UML diagram, many classes have one instance of UserList and since all of them are same instance of UserList passed around as a parameter, I think refactoring it to implement a Singleton Pattern could improve my design.
